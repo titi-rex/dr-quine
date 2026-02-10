@@ -4,6 +4,7 @@ AFLAGS	= -f elf64
 CC		= gcc
 CFLAGS	= -no-pie
 
+DIFF	= diff --color=always
 
 NAME	= Colleen
 SRC		= $(NAME).s
@@ -14,20 +15,24 @@ OUTPUT	= $(NAME)_output.s
 all: $(NAME)
 
 clean:
-	rm -f $(OUTPUT)
+	rm -f $(OBJ) $(OUTPUT)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $<
 
+$(OUTPUT): $(NAME)
+	./$(NAME) > $(OUTPUT)
+
 %.o: %.s
 	$(ASM) $(AFLAGS) $< -o $@
 
 
-test: $(NAME)
-	./$(NAME) > $(OUTPUT); diff $(SRC) $(OUTPUT);
+diff: $(OUTPUT)
+	$(DIFF) $(SRC) $(OUTPUT)
+
 

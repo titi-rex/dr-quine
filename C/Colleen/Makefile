@@ -14,15 +14,12 @@ clean:
 	rm -f $(OUTPUT)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
 $(NAME): $(SRC)
 	$(CC) $(CFLAGS) -o $@ $<
-
-
-test: diff
 
 $(OUTPUT): $(NAME)
 	./$(NAME) > $(OUTPUT)
