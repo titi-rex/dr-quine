@@ -1,7 +1,0 @@
-• The executable must be named Colleen.
-• When executed, the program must display on the standard output an output identical to the source code of the file used to compile the program.
-
-• The Assembly source code must contain at least:
-	◦ A clear entry point (e.g., _start or a symbol linked to main as per your toolchain).
-	◦ Two different comments.
-	◦ One comment must be present within the entry point or its immediately-called routine.

@@ -1,7 +1,0 @@
-• The executable must be named Grace.
-• When executed, the program writes in a file named Grace_kid.s the source code of the file used to compile the program.
-
-• The Assembly source code must strictly contain:
-	◦ No extra routines beyond the entry point needed to perform the task (no additional procedures).
-	◦ Exactly three macros (or the closest equivalent for your assembler).
-	◦ One comment.
