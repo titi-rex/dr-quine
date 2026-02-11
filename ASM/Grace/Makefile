@@ -1,29 +1,38 @@
 
-CC		= clang
-CFLAGS	= -Wall -Wextra -Werror
+ASM		= nasm
+AFLAGS	= -f elf64
+CC		= gcc
+CFLAGS	= -no-pie
 
 DIFF	= diff --color=always
 
 NAME	= Grace
-SRC		= $(NAME).c
-OUTPUT	= $(NAME)_kids.c
+SRC		= $(NAME).s
+OBJ		= $(SRC:.s=.o)
+OUTPUT	= $(NAME)_kids.s
+
 
 all: $(NAME)
 
 clean:
-	rm -f $(OUTPUT)
+	rm -f $(OBJ) $(OUTPUT)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-$(NAME): $(SRC)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $<
 
 $(OUTPUT): $(NAME)
 	./$(NAME)
 
+%.o: %.s
+	$(ASM) $(AFLAGS) $< -o $@
+
+
 diff: $(OUTPUT)
 	$(DIFF) $(SRC) $(OUTPUT)
+
 
