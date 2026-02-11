@@ -6,7 +6,7 @@ DIFF	= diff --color=always
 
 NAME	= Grace
 SRC		= $(NAME).c
-OUTPUT	= $(NAME)_kids.c
+OUTPUT	= $(NAME)_kid.c
 
 all: $(NAME)
 

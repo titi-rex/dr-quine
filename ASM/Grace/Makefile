@@ -9,7 +9,7 @@ DIFF	= diff --color=always
 NAME	= Grace
 SRC		= $(NAME).s
 OBJ		= $(SRC:.s=.o)
-OUTPUT	= $(NAME)_kids.s
+OUTPUT	= $(NAME)_kid.s
 
 
 all: $(NAME)

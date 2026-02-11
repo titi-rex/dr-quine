@@ -2,9 +2,11 @@
 CC		= clang
 CFLAGS	= -Wall -Wextra -Werror
 
-NAME	= Colleen
-SRC		= Colleen.c
-OUTPUT	= $(NAME)_output.c
+DIFF	= diff --color=always
+
+NAME	= Sully
+SRC		= $(NAME).c
+OUTPUT	= $(NAME)_{0..4}.c $(NAME)_{0..4}
 
 all: $(NAME)
 
@@ -19,6 +21,8 @@ re: fclean all
 $(NAME): $(SRC)
 	$(CC) $(CFLAGS) -o $@ $<
 
-test: $(NAME)
-	./$(NAME) > $(OUTPUT); diff $(SRC) $(OUTPUT);
+$(OUTPUT): $(NAME)
+	./$(NAME)
 
+diff: $(OUTPUT)
+	$(DIFF) $(SRC) $(OUTPUT)
