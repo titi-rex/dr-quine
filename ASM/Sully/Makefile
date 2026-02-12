@@ -8,7 +8,7 @@ DIFF	= diff --color=always
 
 NAME	= Sully
 SRC		= $(NAME).s
-OBJ		= $(SRC:.s=.o)
+OBJ		= $(NAME).o
 
 TMP_DIR		= tmp
 
@@ -17,20 +17,17 @@ TMP_DIR		= tmp
 all: $(NAME)
 
 clean:
-	rm -f $(OBJ) $(TMP_DIR)
+	@rm -rf $(TMP_DIR)
+	@echo Clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(OBJ)
 
 re: fclean all
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $<
-
-%.o: %.s
-	$(ASM) $(AFLAGS) $< -o $@
-
-
+$(NAME): $(SRC)
+	$(ASM) $(AFLAGS) -o $@.o $<
+	$(CC) $(CFLAGS) -o $@ $@.o
 
 test: $(NAME) clean
 	@mkdir -p $(TMP_DIR); cp $(NAME) $(TMP_DIR)/$(NAME); cd $(TMP_DIR); ./$(NAME);
@@ -43,5 +40,3 @@ diff: test
 	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_2.c;
 	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_1.c;
 	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_0.c;
-
-
