@@ -8,6 +8,8 @@ NAME	= Grace
 SRC		= $(NAME).c
 OUTPUT	= $(NAME)_kid.c
 
+.PHONY: all clean fclean re test diff
+
 all: $(NAME)
 
 clean:

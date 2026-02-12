@@ -14,7 +14,6 @@ OUTPUT_SRC	= $(addsuffix .c, $(OUTPUT_NAME))
 TMP_DIR		= tmp
 OUTPUT_TMP	= $(addprefix $(TMP_DIR)/, $(OUTPUT_SRC))
 
-
 .PHONY: all clean fclean re test diff
 
 all: $(NAME)
@@ -35,7 +34,7 @@ $(NAME): $(SRC)
 
 test: $(NAME) clean
 	@mkdir -p $(TMP_DIR); cp $(NAME) $(TMP_DIR)/$(NAME); cd $(TMP_DIR); ./$(NAME);
-	@echo Number of files: $$(ls -la tmp | grep Sully | wc -l)
+	@echo Number of files: $$(ls -la $(TMP_DIR) | grep Sully | wc -l)
 
 diff: test
 	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_5.c;

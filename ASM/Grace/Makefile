@@ -11,6 +11,7 @@ SRC		= $(NAME).s
 OBJ		= $(SRC:.s=.o)
 OUTPUT	= $(NAME)_kid.s
 
+.PHONY: all clean fclean re test diff
 
 all: $(NAME)
 
