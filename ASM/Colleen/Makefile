@@ -11,7 +11,7 @@ SRC		= $(NAME).s
 OBJ		= $(SRC:.s=.o)
 OUTPUT	= $(NAME)_output.s
 
-.PHONY: all clean fclean re test diff
+.PHONY: all clean fclean re diff
 
 all: $(NAME)
 

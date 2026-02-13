@@ -1,6 +1,6 @@
 
 ASM		= nasm
-AFLAGS	= -f elf64
+AFLAGS	= -w+x -f elf64 -gstabs
 CC		= gcc
 CFLAGS	= -no-pie
 
@@ -34,9 +34,9 @@ test: $(NAME) clean
 	@echo Number of files: $$(ls -la $(TMP_DIR) | grep Sully | wc -l)
 
 diff: test
-	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_5.c;
-	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_4.c;
-	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_3.c;
-	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_2.c;
-	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_1.c;
-	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_0.c;
+	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_5.s;
+	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_4.s;
+	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_3.s;
+	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_2.s;
+	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_1.s;
+	-$(DIFF) $(SRC) $(TMP_DIR)/$(NAME)_0.s;
