@@ -1,6 +1,6 @@
 
 ASM		= nasm
-AFLAGS	= -w+x -f elf64 -gstabs
+AFLAGS	= -f elf64
 CC		= gcc
 CFLAGS	= -no-pie
 
